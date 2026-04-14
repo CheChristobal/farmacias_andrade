@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farmacia Andrade | Independencia</title>
-    
+
     <link rel="stylesheet" href="static/css/style.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -14,87 +14,75 @@
     <nav style="background: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000;">
         <div class="logo" style="font-weight: bold; font-size: 1.5rem; color: #2c3e50;">💊 Farmacia Andrade</div>
         <div class="menu">
-            <a href="#inicio" style="margin-left: 20px; text-decoration: none; color: #333;">Inicio</a>
-            <a href="#catalogo" style="margin-left: 20px; text-decoration: none; color: #333;">Catálogo</a>
-            <a href="#contacto" style="margin-left: 20px; text-decoration: none; color: #333;">Contacto</a>
+            <a href="#inicio" style="margin-left: 20px; text-decoration: none; color: #333; font-weight: 500;">Inicio</a>
+            <a href="#catalogo" style="margin-left: 20px; text-decoration: none; color: #333; font-weight: 500;">Catálogo</a>
+            <a href="#contacto" style="margin-left: 20px; text-decoration: none; color: #333; font-weight: 500;">Contacto</a>
         </div>
     </nav>
 
-    <section id="inicio" class="hero" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('static/img/hero-bg.png'); background-size: cover; background-position: center; height: 80vh; display: flex; align-items: center; justify-content: center; color: white; text-align: center;">
+    <section id="inicio" class="hero" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('static/img/hero-bg.png'); background-size: cover; background-position: center; height: 85vh; display: flex; align-items: center; justify-content: center; color: white; text-align: center;">
         <div class="hero-content">
             <div class="badge" style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 50px; display: inline-block; margin-bottom: 1rem;">✨ Atención Vecinal en Independencia</div>
-            <h2 style="font-size: 3.5rem; margin: 0;">Bienvenido a <br><span style="color: #4ade80;">Farmacia Andrade</span></h2>
-            <p style="font-size: 1.2rem; max-width: 600px; margin: 1rem auto;">Cuidamos tu salud y tu bolsillo con atención personalizada y el surtido que tu familia necesita.</p>
+            <h2 style="font-size: 3.5rem; margin: 0; line-height: 1.2;">Bienvenido a <br><span style="color: #4ade80;">Farmacia Andrade</span></h2>
+            <p style="font-size: 1.2rem; max-width: 600px; margin: 1rem auto; opacity: 0.9;">Cuidamos tu salud y tu bolsillo con atención personalizada y el surtido que tu familia necesita.</p>
             <div class="hero-btns" style="margin-top: 2rem;">
-                <a href="#catalogo" class="btn btn-primary" style="background: #27ae60; color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: bold;">Explorar Catálogo</a>
-                <a href="#contacto" class="btn btn-secondary" style="border: 2px solid white; color: white; margin-left: 10px; padding: 13px 30px; text-decoration: none; border-radius: 50px; font-weight: bold;">Contacto Directo</a>
+                <a href="#catalogo" class="btn-primary" style="background: #27ae60; color: white; padding: 15px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block;">Explorar Catálogo</a>
+                <a href="#contacto" class="btn-secondary" style="border: 2px solid white; color: white; margin-left: 10px; padding: 13px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block;">Contacto Directo</a>
             </div>
         </div>
     </section>
 
     <section class="quick-search">
-        <div class="search-container card" style="max-width: 800px; margin: -50px auto 40px; padding: 2.5rem; text-align: center; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); position: relative;">
-            <h3><i class="fas fa-search" style="color: #27ae60;"></i> ¿Buscas un medicamento?</h3>
-            <p>Consulta stock y precios actualizados al instante.</p>
-            <form action="#" class="search-form" style="display: flex; gap: 10px; margin-top: 20px;">
-                <input type="text" placeholder="Ej: Losartán, Paracetamol, Vitaminas..." required 
+        <div class="search-container" style="max-width: 800px; margin: -50px auto 40px; padding: 2.5rem; text-align: center; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; z-index: 10;">
+            <h3 style="margin-top: 0;"><i class="fas fa-search" style="color: #27ae60;"></i> ¿Buscas un medicamento?</h3>
+            <p style="color: #64748b;">Consulta stock y precios actualizados al instante vía WhatsApp.</p>
+            <form action="https://wa.me/56991536968" method="GET" style="display: flex; gap: 10px; margin-top: 20px;">
+                <input type="text" name="text" placeholder="Ej: Losartán, Paracetamol, Vitaminas..." required 
                        style="flex: 1; padding: 15px 25px; border-radius: 50px; border: 1px solid #e2e8f0; outline: none;">
-                <button type="submit" style="background: #27ae60; color: white; border: none; padding: 0 30px; border-radius: 50px; cursor: pointer;">Buscar</button>
+                <button type="submit" style="background: #27ae60; color: white; border: none; padding: 0 30px; border-radius: 50px; cursor: pointer; font-weight: bold;">Buscar</button>
             </form>
         </div>
     </section>
 
     <section class="features" style="padding: 4rem 10%;">
-        <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-            <div class="card" style="padding: 2.5rem; text-align: center; background: #f8fafc; border-radius: 20px;">
-                <span style="font-size: 3rem;">💰</span>
-                <h3>Precios Justos</h3>
-                <p>Ahorra hasta un 30% frente a grandes cadenas.</p>
+        <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+            <div class="card" style="padding: 2.5rem; text-align: center; background: #f8fafc; border-radius: 20px; transition: 0.3s;">
+                <span style="font-size: 3rem; display: block; margin-bottom: 1rem;">💰</span>
+                <h3 style="color: #2c3e50;">Precios Justos</h3>
+                <p style="color: #64748b;">Ahorra hasta un 30% frente a grandes cadenas. Valoramos tu economía.</p>
             </div>
-            <div class="card" style="padding: 2.5rem; text-align: center; background: #f8fafc; border-radius: 20px;">
-                <span style="font-size: 3rem;">🤝</span>
-                <h3>Atención Vecinal</h3>
-                <p>Asesoría personalizada con calidez humana.</p>
+            <div class="card" style="padding: 2.5rem; text-align: center; background: #f8fafc; border-radius: 20px; transition: 0.3s;">
+                <span style="font-size: 3rem; display: block; margin-bottom: 1rem;">🤝</span>
+                <h3 style="color: #2c3e50;">Atención Vecinal</h3>
+                <p style="color: #64748b;">Te asesoramos con la calidez de quienes conocen el barrio de Independencia.</p>
             </div>
-            <div class="card" style="padding: 2.5rem; text-align: center; background: #f8fafc; border-radius: 20px;">
-                <span style="font-size: 3rem;">📦</span>
-                <h3>Surtido Completo</h3>
-                <p>Medicamentos, perfumería y cuidado infantil.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="faq" style="background: #fffafa; padding: 4rem 10%;">
-        <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem; color: #2c3e50;">Preguntas Frecuentes</h2>
-        <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-            <div class="card" style="background: white; padding: 1.5rem; border-radius: 15px; border-left: 5px solid #27ae60;">
-                <h4 style="color: #2c3e50;"><i class="fas fa-question-circle"></i> ¿Venden medicamentos con receta retenida?</h4>
-                <p>Sí, de forma presencial presentando la receta física original.</p>
-            </div>
-            <div class="card" style="background: white; padding: 1.5rem; border-radius: 15px; border-left: 5px solid #27ae60;">
-                <h4 style="color: #2c3e50;"><i class="fas fa-motorcycle"></i> ¿Tienen delivery en Independencia?</h4>
-                <p>Despacho gratuito en cuadrante Gamero por compras sobre $15.000.</p>
+            <div class="card" style="padding: 2.5rem; text-align: center; background: #f8fafc; border-radius: 20px; transition: 0.3s;">
+                <span style="font-size: 3rem; display: block; margin-bottom: 1rem;">📦</span>
+                <h3 style="color: #2c3e50;">Surtido Completo</h3>
+                <p style="color: #64748b;">Medicamentos, perfumería y cuidado infantil. Lo que no hay, lo encargamos.</p>
             </div>
         </div>
     </section>
 
-    <section id="contacto" style="padding: 4rem 10%; text-align: center;">
-        <div class="info-box" style="background: #2c3e50; color: white; padding: 4rem; border-radius: 40px; max-width: 900px; margin: 0 auto;">
-            <h3 style="color: #4ade80; margin-bottom: 1rem;"><i class="fas fa-map-marker-alt"></i> Visítanos</h3>
-            <p><strong>Gamero 1798, Independencia</strong><br>Santiago, Región Metropolitana.</p>
-            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; margin: 20px 0;">
-                <p><i class="far fa-clock"></i> Lunes a Viernes: 09:00 - 20:00</p>
-                <p><i class="far fa-clock"></i> Sábados: 10:00 - 18:00</p>
+    <section id="contacto" style="background: #2c3e50; color: white; padding: 5rem 10%; border-radius: 50px 50px 0 0;">
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+            <h2 style="color: #4ade80; font-size: 2.5rem; margin-bottom: 1rem;"><i class="fas fa-map-marker-alt"></i> Visítanos en el Barrio</h2>
+            <p style="font-size: 1.2rem; opacity: 0.9;"><strong>Gamero 1798, Independencia</strong><br>Santiago, Región Metropolitana.</p>
+            
+            <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 20px; margin: 2rem 0; display: inline-block; width: 100%; box-sizing: border-box;">
+                <p style="margin: 5px 0;"><i class="far fa-clock"></i> Lunes a Viernes: 09:00 - 20:00</p>
+                <p style="margin: 5px 0;"><i class="far fa-clock"></i> Sábados: 10:00 - 18:00</p>
             </div>
-            <a href="https://wa.me/56991536968" style="background: #25d366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; display: inline-block; font-weight: bold;">
+
+            <a href="https://wa.me/56991536968" style="background: #25d366; color: white; padding: 18px 40px; text-decoration: none; border-radius: 50px; display: inline-block; font-weight: bold; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
                 <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
             </a>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 2rem; background: #f8fafc; color: #64748b; border-top: 1px solid #eee;">
-        <p>&copy; 2026 Farmacia Andrade. Todos los derechos reservados.</p>
-        <p><small>Ubicados en Gamero 1798, Independencia.</small></p>
+    <footer style="text-align: center; padding: 2rem; background: #1a202c; color: #a0aec0; border-top: 1px solid #2d3748;">
+        <p style="margin: 0;">&copy; 2026 Farmacia Andrade. Todos los derechos reservados.</p>
+        <p style="font-size: 0.8rem; margin-top: 10px;">Gamero 1798, Independencia | Desarrollado por Cristóbal Echeverría</p>
     </footer>
 
 </body>
