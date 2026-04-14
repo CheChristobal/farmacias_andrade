@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section-padding fade-in" style="min-height: 70vh; display: flex; align-items: center; justify-content: center;">
+    <div class="card shadow-lg" style="max-width: 400px; width: 100%;">
+        <div class="logo-icon" style="margin: 0 auto 20px auto;"><i class="fas fa-lock"></i></div>
+        <h2 style="color: var(--primary-dark); margin-bottom: 20px;">Acceso Admin</h2>
+        
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <p style="color: var(--primary); font-weight: 700; margin-bottom: 15px;">{{ message }}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <input type="password" name="password" placeholder="Introduce la clave maestra" 
+                   style="width: 100%; padding: 15px; border-radius: 50px; border: 1px solid #ddd; outline: none; margin-bottom: 20px; text-align: center;">
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Entrar al Panel</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

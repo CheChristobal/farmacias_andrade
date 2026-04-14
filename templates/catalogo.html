@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="catalog-header hero" style="padding: 80px 10% 120px; clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);">
+    <div class="hero-content">
+        <div class="badge">Surtido Completo 2026</div>
+        <h2>Tu Salud, <span>Nuestra Misión</span></h2>
+        <p>Explora nuestro catálogo digital. Precios actualizados y stock real para la comunidad de Independencia.</p>
+    </div>
+</section>
+
+<section class="catalog-utils" style="margin-top: -50px; position: relative; z-index: 10; padding: 0 5%;">
+    <div class="card" style="padding: 1.5rem; box-shadow: var(--shadow);">
+        <form action="{{ url_for('catalogo') }}" method="GET" style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+            
+            <div class="search-box" style="flex: 2; min-width: 280px; display: flex; align-items: center; background: #f8fafc; padding: 10px 24px; border-radius: 50px; border: 1px solid #eee;">
+                <i class="fas fa-search" style="color: var(--primary);"></i>
+                <input type="text" name="q" placeholder="¿Qué buscas hoy?" 
+                       value="{{ request.args.get('q', '') }}" 
+                       style="width: 100%; border: none; outline: none; background: transparent; padding-left: 12px; font-family: 'Outfit';">
+            </div>
+
+            <div class="filter-box" style="flex: 1; min-width: 200px;">
+                <select name="categoria" onchange="this.form.submit()" 
+                        style="width: 100%; padding: 12px 20px; border-radius: 50px; border: 1px solid #eee; outline: none; font-family: 'Outfit'; cursor: pointer; background: white;">
+                    <option value="">Todas las Categorías</option>
+                    <option value="Infantil" {% if request.args.get('categoria') == 'Infantil' %}selected{% endif %}>Cuidado Infantil</option>
+                    <option value="Cuidado" {% if request.args.get('categoria') == 'Cuidado' %}selected{% endif %}>Belleza y Cuidado</option>
+                    <option value="Suplementos" {% if request.args.get('categoria') == 'Suplementos' %}selected{% endif %}>Suplementos</option>
+                    <option value="Botiquín" {% if request.args.get('categoria') == 'Botiquín' %}selected{% endif %}>Primeros Auxilios</option>
+                </select>
+            </div>
+            
+            {% if request.args.get('categoria') or request.args.get('q') %}
+                <a href="{{ url_for('catalogo') }}" style="color: var(--primary); font-size: 0.8rem; font-weight: 700;">Limpiar Filtros</a>
+            {% endif %}
+        </form>
+    </div>
+</section>
+
+<section class="section-padding" style="padding-bottom: 20px;">
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); text-align: center; gap: 15px;">
+        <a href="{{ url_for('catalogo', categoria='Infantil') }}" class="card cat-btn {% if request.args.get('categoria') == 'Infantil' %}active-cat{% endif %}" style="padding: 15px; text-decoration: none;">
+            <div style="font-size: 2rem;">👶</div>
+            <p style="font-size: 0.8rem; font-weight: 700; margin-top: 10px; color: var(--dark);">Infantil</p>
+        </a>
+        <a href="{{ url_for('catalogo', categoria='Cuidado') }}" class="card cat-btn {% if request.args.get('categoria') == 'Cuidado' %}active-cat{% endif %}" style="padding: 15px; text-decoration: none;">
+            <div style="font-size: 2rem;">🧴</div>
+            <p style="font-size: 0.8rem; font-weight: 700; margin-top: 10px; color: var(--dark);">Cuidado</p>
+        </a>
+        <a href="{{ url_for('catalogo', categoria='Suplementos') }}" class="card cat-btn {% if request.args.get('categoria') == 'Suplementos' %}active-cat{% endif %}" style="padding: 15px; text-decoration: none;">
+            <div style="font-size: 2rem;">🍏</div>
+            <p style="font-size: 0.8rem; font-weight: 700; margin-top: 10px; color: var(--dark);">Nutrición</p>
+        </a>
+        <a href="{{ url_for('catalogo', categoria='Botiquín') }}" class="card cat-btn {% if request.args.get('categoria') == 'Botiquín' %}active-cat{% endif %}" style="padding: 15px; text-decoration: none;">
+            <div style="font-size: 2rem;">🩹</div>
+            <p style="font-size: 0.8rem; font-weight: 700; margin-top: 10px; color: var(--dark);">Botiquín</p>
+        </a>
+    </div>
+</section>
+
+<section class="catalog-main section-padding">
+    <div class="grid">
+        {% for p in productos %}
+        <div class="card producto-card" style="overflow: hidden; padding: 0; display: flex; flex-direction: column; transition: transform 0.3s ease;">
+            
+            <a href="{{ url_for('detalle_producto', id=p.id) }}" style="text-decoration: none; color: inherit;">
+                <div class="product-img-wrapper" style="width: 100%; height: 240px; overflow: hidden; position: relative; background: #fff; display: flex; align-items: center; justify-content: center;">
+                    <img src="{{ url_for('static', filename='uploads/' + p.imagen) }}" 
+                         alt="{{ p.nombre }}" 
+                         style="max-width: 90%; max-height: 90%; object-fit: contain; transition: transform 0.5s ease;">
+                    
+                    {% if p.precio < 3000 %}
+                        <div class="badge" style="position: absolute; top: 15px; left: 15px; background: #22c55e; color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 700;">Precio Vecino</div>
+                    {% endif %}
+                </div>
+
+                <div style="padding: 24px; text-align: left;">
+                    <span class="badge-cat" style="font-size: 0.7rem; color: var(--primary); font-weight: 800; text-transform: uppercase;">{{ p.categoria }}</span>
+                    <h3 style="font-size: 1.2rem; margin: 10px 0; min-height: 3rem; line-height: 1.3;">{{ p.nombre }}</h3>
+                    <div class="price-box" style="margin: 15px 0;">
+                        <span style="font-size: 1.8rem; font-weight: 800; color: var(--primary-dark);">${{ p.precio }}</span>
+                    </div>
+                </div>
+            </a>
+
+            <div style="padding: 0 24px 24px 24px;">
+                <div class="card-actions" style="display: flex; flex-direction: column; gap: 10px;">
+                    <button onclick="addToCart('{{ p.nombre }}', '{{ p.precio }}')" class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 0.8rem;">
+                        <i class="fas fa-cart-plus"></i> Añadir al Pedido
+                    </button>
+                    
+                    <a href="https://wa.me/56991536968?text=Hola Farmacia Andrade, consulto por stock de: {{ p.nombre }}" 
+                       target="_blank" 
+                       class="btn-text" style="font-size: 0.85rem; text-align: center; color: #475569; text-decoration: none;">
+                        <i class="fab fa-whatsapp" style="color: #25d366;"></i> Consultar Stock
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="card" style="grid-column: 1/-1; padding: 80px; text-align: center;">
+            <div style="font-size: 4rem; color: #e2e8f0; margin-bottom: 20px;"><i class="fas fa-box-open"></i></div>
+            <h3>Sin resultados</h3>
+            <p>No encontramos productos que coincidan con tu búsqueda.</p>
+            <a href="{{ url_for('catalogo') }}" class="btn btn-primary" style="margin-top: 20px;">Ver todo el catálogo</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="pharma-info section-padding" style="background: var(--dark); color: white; text-align: center; border-radius: 60px 60px 0 0;">
+    <div style="max-width: 800px; margin: 0 auto;">
+        <div style="background: rgba(244, 63, 94, 0.15); display: inline-block; padding: 20px; border-radius: 50%; margin-bottom: 25px;">
+            <i class="fas fa-hand-holding-medical" style="color: var(--primary); font-size: 2.5rem;"></i>
+        </div>
+        <h2 style="font-size: 2.2rem; margin-bottom: 15px;">Ética y Bioequivalencia</h2>
+        <p style="opacity: 0.8; font-size: 1.1rem; line-height: 1.8;">
+            En <strong>Farmacia Andrade</strong> te ofrecemos alternativas bioequivalentes certificadas por el ISP. 
+            Mismo efecto terapéutico, mayor ahorro para tu bolsillo.
+        </p>
+    </div>
+</section>
+
+{% endblock %}

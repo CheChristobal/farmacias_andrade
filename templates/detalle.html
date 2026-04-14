@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="section-padding fade-in">
+    <div class="container-flex" style="max-width: 1100px; margin: 0 auto; gap: 50px; align-items: flex-start; flex-wrap: wrap;">
+        
+        <div class="card" style="flex: 1; padding: 20px; min-width: 320px; background: white; display: flex; align-items: center; justify-content: center; min-height: 450px;">
+            <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                <img src="{{ url_for('static', filename='uploads/' + producto.imagen) }}" 
+                     alt="{{ producto.nombre }}" 
+                     style="max-width: 100%; max-height: 400px; object-fit: contain; transition: transform 0.3s ease;"
+                     onmouseover="this.style.transform='scale(1.05)'"
+                     onmouseout="this.style.transform='scale(1)'">
+            </div>
+        </div>
+
+        <div style="flex: 1; min-width: 320px; text-align: left;">
+            <nav style="margin-bottom: 20px; font-size: 0.9rem; color: #64748b; font-weight: 600;">
+                <a href="{{ url_for('catalogo') }}" style="text-decoration: none; color: inherit;">Catálogo</a> 
+                <span style="margin: 0 10px;">/</span> 
+                <a href="{{ url_for('catalogo', categoria=producto.categoria) }}" style="text-decoration: none; color: var(--primary);">{{ producto.categoria }}</a>
+            </nav>
+
+            <h1 style="font-size: 2.8rem; color: var(--dark); margin-bottom: 10px; line-height: 1.1;">{{ producto.nombre }}</h1>
+            
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                <span class="badge" style="background: var(--accent); color: var(--primary-dark); font-weight: 800; padding: 6px 15px; border-radius: 50px; text-transform: uppercase; font-size: 0.75rem;">
+                    {{ producto.categoria }}
+                </span>
+                <span style="font-size: 0.85rem; color: #94a3b8;">SKU: FA-00{{ producto.id }}</span>
+            </div>
+
+            <div style="margin: 30px 0; padding: 25px 0; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;">
+                <div style="display: flex; align-items: baseline; gap: 10px;">
+                    <span style="font-size: 3rem; font-weight: 800; color: var(--primary-dark);">${{ producto.precio }}</span>
+                    <small style="color: #94a3b8; text-decoration: line-through; font-size: 1.1rem;">${{ (producto.precio * 1.2)|int }}</small>
+                </div>
+                <p style="font-size: 1rem; color: #22c55e; font-weight: 700; margin-top: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-truck-loading"></i> Stock Inmediato disponible
+                </p>
+            </div>
+
+            <div style="background: #fdf2f2; border-left: 4px solid var(--primary); padding: 15px; margin-bottom: 30px; border-radius: 0 8px 8px 0;">
+                <p style="color: #9f1239; font-size: 0.9rem; line-height: 1.6; margin: 0;">
+                    <strong>Nota importante:</strong> Medicamento distribuido por Farmacia Andrade. 
+                    Si su compra requiere receta médica, nuestro farmacéutico la solicitará al momento de la entrega o retiro en local Gamero 1798.
+                </p>
+            </div>
+
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <button onclick="addToCart('{{ producto.nombre }}', '{{ producto.precio }}')" 
+                        class="btn btn-primary" 
+                        style="flex: 2; min-width: 220px; padding: 18px; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <i class="fas fa-cart-plus"></i> Añadir al Pedido
+                </button>
+                
+                <a href="https://wa.me/56991536968?text=Hola Farmacia Andrade, consulto por disponibilidad de: {{ producto.nombre }}" 
+                   target="_blank" 
+                   class="btn" 
+                   style="background: #25d366; color: white; flex: 1; min-width: 220px; text-align: center; padding: 18px; font-size: 1rem; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; border-radius: 50px; font-weight: 700;">
+                    <i class="fab fa-whatsapp"></i> Consultar Stock
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% if relacionados %}
+<section class="section-padding" style="background: #f8fafc; border-top: 1px solid #f1f5f9;">
+    <div style="max-width: 1100px; margin: 0 auto;">
+        <h3 class="section-title" style="font-size: 1.8rem; text-align: left; margin-bottom: 40px;">Productos similares</h3>
+        <div class="grid">
+            {% for r in relacionados %}
+            <div class="card" style="padding: 0; overflow: hidden; transition: 0.3s;">
+                <a href="{{ url_for('detalle_producto', id=r.id) }}" style="text-decoration: none; color: inherit;">
+                    <div style="background: white; padding: 20px; height: 160px; display: flex; align-items: center; justify-content: center;">
+                        <img src="{{ url_for('static', filename='uploads/' + r.imagen) }}" 
+                             style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    </div>
+                    <div style="padding: 20px; text-align: left; border-top: 1px solid #f1f5f9;">
+                        <span style="font-size: 0.7rem; color: var(--primary); font-weight: 800; text-transform: uppercase;">{{ r.categoria }}</span>
+                        <h4 style="color: var(--dark); margin: 5px 0 10px 0; font-size: 1rem; min-height: 2.4rem; line-height: 1.2;">{{ r.nombre }}</h4>
+                        <p style="color: var(--primary-dark); font-weight: 800; font-size: 1.2rem; margin: 0;">${{ r.precio }}</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

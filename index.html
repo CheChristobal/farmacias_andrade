@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="badge">✨ Atención Vecinal en Independencia</div>
+        <h2>Bienvenido a <br><span>Farmacia Andrade</span></h2>
+        <p>Cuidamos tu salud y tu bolsillo con atención personalizada y el surtido que tu familia necesita.</p>
+        <div class="hero-btns">
+            <a href="{{ url_for('catalogo') }}" class="btn btn-primary">Explorar Catálogo</a>
+            <a href="#contacto" class="btn btn-secondary" style="border: 2px solid white; color: white; margin-left: 10px; text-decoration: none;">Contacto Directo</a>
+        </div>
+    </div>
+</section>
+
+<section class="quick-search">
+    <div class="search-container card" style="max-width: 800px; margin: -50px auto 40px; padding: 2.5rem; text-align: center;">
+        <h3><i class="fas fa-search" style="color: var(--primary);"></i> ¿Buscas un medicamento?</h3>
+        <p>Consulta stock y precios actualizados al instante.</p>
+        <form action="{{ url_for('catalogo') }}" method="GET" class="search-form" style="display: flex; gap: 10px; margin-top: 20px;">
+            <input type="text" name="q" placeholder="Ej: Losartán, Paracetamol, Vitaminas..." required 
+                   style="flex: 1; padding: 15px 25px; border-radius: 50px; border: 1px solid #e2e8f0; outline: none;">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+    </div>
+</section>
+
+<section class="features section-padding">
+    <div class="grid">
+        <div class="card" style="padding: 2.5rem; text-align: center;">
+            <span class="icon" style="font-size: 3rem; display: block; margin-bottom: 1rem;">💰</span>
+            <h3>Precios Justos</h3>
+            <p>Ahorra hasta un 30% frente a grandes cadenas. Valoramos tu economía familiar.</p>
+        </div>
+        <div class="card" style="padding: 2.5rem; text-align: center;">
+            <span class="icon" style="font-size: 3rem; display: block; margin-bottom: 1rem;">🤝</span>
+            <h3>Atención Vecinal</h3>
+            <p>No eres un número más. Te asesoramos con la calidez de quienes te conocen.</p>
+        </div>
+        <div class="card" style="padding: 2.5rem; text-align: center;">
+            <span class="icon" style="font-size: 3rem; display: block; margin-bottom: 1rem;">📦</span>
+            <h3>Surtido Completo</h3>
+            <p>Medicamentos, perfumería y cuidado infantil. Lo que no tenemos, lo encargamos.</p>
+        </div>
+    </div>
+</section>
+
+<section id="faq" class="section-padding" style="background: #fffafa;">
+    <h2 class="section-title" style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem; color: var(--primary-dark);">Preguntas Frecuentes</h2>
+    <div class="grid">
+        <div class="card" style="text-align: left; padding: 1.5rem;">
+            <h4 style="color: var(--primary-dark); margin-bottom: 10px;"><i class="fas fa-question-circle"></i> ¿Venden medicamentos con receta retenida?</h4>
+            <p style="font-size: 0.9rem;">Sí, pero la venta solo se realiza de forma presencial presentando la receta física original, cumpliendo con la normativa del ISP.</p>
+        </div>
+        <div class="card" style="text-align: left; padding: 1.5rem;">
+            <h4 style="color: var(--primary-dark); margin-bottom: 10px;"><i class="fas fa-motorcycle"></i> ¿Tienen delivery en Independencia?</h4>
+            <p style="font-size: 0.9rem;">Contamos con despacho gratuito en el cuadrante cercano a Gamero por compras sobre $15.000. Consultar factibilidad por WhatsApp.</p>
+        </div>
+        <div class="card" style="text-align: left; padding: 1.5rem;">
+            <h4 style="color: var(--primary-dark); margin-bottom: 10px;"><i class="fas fa-pills"></i> ¿Tienen convenios con Fonasa?</h4>
+            <p style="font-size: 0.9rem;">Sí, contamos con los descuentos automáticos de Fonasa para los medicamentos en convenio vigentes al momento de tu compra.</p>
+        </div>
+    </div>
+</section>
+
+<section id="convenios" class="section-padding">
+    <div class="card" style="background: var(--brand); color: white; border: none; padding: 4rem; text-align: center; border-radius: 40px;">
+        <h2 style="color: white; margin-bottom: 15px;">Convenios para la Comunidad</h2>
+        <p style="max-width: 700px; margin: 0 auto 30px; opacity: 0.9;">
+            En Farmacia Andrade premiamos tu preferencia. Si eres vecino de Independencia o perteneces a un club de adulto mayor, accede a beneficios exclusivos.
+        </p>
+        <div class="grid" style="padding: 0; margin-bottom: 30px; border: none;">
+            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px;">
+                <i class="fas fa-id-card" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                <h4 style="margin-bottom: 5px;">Tarjeta Vecino</h4>
+                <p style="font-size: 0.85rem;">5% de descuento en perfumería.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px;">
+                <i class="fas fa-heartbeat" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                <h4 style="margin-bottom: 5px;">Crónicos</h4>
+                <p style="font-size: 0.85rem;">Precios especiales en tratamientos mensuales.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px;">
+                <i class="fas fa-users" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                <h4 style="margin-bottom: 5px;">Adulto Mayor</h4>
+                <p style="font-size: 0.85rem;">Atención preferencial y descuentos adicionales.</p>
+            </div>
+        </div>
+        <a href="https://wa.me/56991536968?text=Hola, me gustaría inscribirme en los convenios vecinales" class="btn btn-primary" style="background: white; color: var(--primary-dark);">Inscribirme ahora</a>
+    </div>
+</section>
+
+<section id="testimonios" class="testimonials section-padding">
+    <h2 class="section-title" style="text-align: center; margin-bottom: 3rem; color: var(--primary-dark);">Confianza de nuestros vecinos</h2>
+    <div class="grid">
+        <div class="card testimonial-item" style="padding: 2rem; text-align: center;">
+            <div class="stars" style="color: #ffbc00; margin-bottom: 10px;">★★★★★</div>
+            <p>"Excelente atención, precios muy convenientes. Un ahorro real comparado con las grandes cadenas."</p>
+            <cite style="display: block; margin-top: 15px; font-weight: 700;">— Roberto Valdés</cite>
+        </div>
+        <div class="card testimonial-item" style="padding: 2rem; text-align: center;">
+            <div class="stars" style="color: #ffbc00; margin-bottom: 10px;">★★★★★</div>
+            <p>"Muchas gracias vecinos, encontramos todo para la familia. Muy recomendados en el barrio."</p>
+            <cite style="display: block; margin-top: 15px; font-weight: 700;">— Sebastián Paredes</cite>
+        </div>
+        <div class="card testimonial-item" style="padding: 2rem; text-align: center;">
+            <div class="stars" style="color: #ffbc00; margin-bottom: 10px;">★★★★★</div>
+            <p>"Servicio impecable y humano. Se nota que les importa la salud de la comunidad."</p>
+            <cite style="display: block; margin-top: 15px; font-weight: 700;">— Elizabeth Chávez</cite>
+        </div>
+    </div>
+</section>
+
+<section id="terminos" class="section-padding" style="border-top: 1px solid #eee;">
+    <div style="max-width: 900px; margin: 0 auto; font-size: 0.85rem; color: #64748b; line-height: 1.8;">
+        <h3 style="color: var(--dark); text-align: center; margin-bottom: 20px;">Términos y Condiciones de Uso</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            <div>
+                <p><strong>1. Venta de Medicamentos:</strong> La dispensación de productos está sujeta a la presentación de la receta médica correspondiente según la normativa legal vigente.</p>
+                <p><strong>2. Precios y Stock:</strong> Los precios publicados pueden variar sin previo aviso. El stock está sujeto a confirmación vía WhatsApp o presencial.</p>
+            </div>
+            <div>
+                <p><strong>3. Despacho:</strong> El servicio de delivery se limita a zonas seguras dentro de la comuna. No se despachan medicamentos psicotrópicos.</p>
+                <p><strong>4. Privacidad:</strong> Sus datos son utilizados únicamente para la gestión de pedidos y promociones internas de Farmacia Andrade.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contacto" class="location-section section-padding">
+    <div class="info-box shadow-lg" style="background: var(--dark); color: white; padding: 4rem; border-radius: 40px; text-align: center; max-width: 900px; margin: 0 auto;">
+        <h3 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-map-marker-alt"></i> Visítanos</h3>
+        <p><strong>Gamero 1798, Independencia</strong><br>Santiago, Región Metropolitana.</p>
+        <div class="hours-badge" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; margin: 20px 0;">
+            <p><i class="far fa-clock"></i> Lunes a Viernes: 09:00 - 20:00</p>
+            <p><i class="far fa-clock"></i> Sábados: 10:00 - 18:00</p>
+        </div>
+        <a href="https://wa.me/56991536968" class="btn btn-primary" style="background: #25d366; border: none;">
+            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+        </a>
+    </div>
+</section>
+
+<section class="newsletter section-padding">
+    <div class="card" style="max-width: 800px; margin: 0 auto; padding: 3rem; text-align: center; border-top: 5px solid var(--primary);">
+        <h3>Únete a nuestro boletín</h3>
+        <p>Recibe promociones exclusivas y consejos de salud directo en tu correo.</p>
+        <form class="newsletter-form" style="display: flex; gap: 10px; margin-top: 20px;">
+            <input type="email" placeholder="tu@correo.com" required 
+                   style="flex: 1; padding: 15px 25px; border-radius: 50px; border: 1px solid #e2e8f0; outline: none;">
+            <button type="submit" class="btn btn-primary">Suscribirme</button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
