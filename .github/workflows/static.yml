@@ -15,8 +15,7 @@ permissions:
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# Allow only one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -31,13 +30,33 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      # --- PASOS AGREGADOS PARA TU PROYECTO FLASK ---
+      
+      - name: Preparar inicio.html como index principal
+        run: |
+          # 1. Copia inicio.html a la raíz y renombralo a index.html
+          cp templates/inicio.html index.html
+          
+          # 2. Reemplaza las etiquetas de Flask por rutas estáticas reales
+          # Esto cambia {{ url_for('static', filename='css/style.css') }} -> static/css/style.css
+          sed -i "s|{{ url_for('static', filename='css/style.css') }}|static/css/style.css|g" index.html
+          sed -i "s|{{ url_for('static', filename='img/hero-bg.png') }}|static/img/hero-bg.png|g" index.html
+          
+          # 3. (Opcional) Si usas base.html, este comando no funcionará bien. 
+          # Lo ideal es que tu inicio.html ya tenga el código completo del diseño.
+
+      # ----------------------------------------------
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
+          # Sube la raíz donde ahora existe el nuevo index.html
           path: '.'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
