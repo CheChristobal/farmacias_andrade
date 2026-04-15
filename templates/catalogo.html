@@ -24,10 +24,23 @@
                 <select name="categoria" onchange="this.form.submit()" 
                         style="width: 100%; padding: 12px 20px; border-radius: 50px; border: 1px solid #eee; outline: none; font-family: 'Outfit'; cursor: pointer; background: white;">
                     <option value="">Todas las Categorías</option>
-                    <option value="Infantil" {% if request.args.get('categoria') == 'Infantil' %}selected{% endif %}>Cuidado Infantil</option>
-                    <option value="Cuidado" {% if request.args.get('categoria') == 'Cuidado' %}selected{% endif %}>Belleza y Cuidado</option>
-                    <option value="Suplementos" {% if request.args.get('categoria') == 'Suplementos' %}selected{% endif %}>Suplementos</option>
-                    <option value="Botiquín" {% if request.args.get('categoria') == 'Botiquín' %}selected{% endif %}>Primeros Auxilios</option>
+                    <optgroup label="⚕️ Salud">
+                        <option value="Medicamentos" {% if request.args.get('categoria') == 'Medicamentos' %}selected{% endif %}>Medicamentos General</option>
+                        <option value="Crónicos" {% if request.args.get('categoria') == 'Crónicos' %}selected{% endif %}>Enfermedades Crónicas</option>
+                        <option value="Salud Mental" {% if request.args.get('categoria') == 'Salud Mental' %}selected{% endif %}>Salud Mental</option>
+                        <option value="Suplementos" {% if request.args.get('categoria') == 'Suplementos' %}selected{% endif %}>Suplementos y Vitaminas</option>
+                    </optgroup>
+                    <optgroup label="✨ Belleza y Cuidado">
+                        <option value="Dermocosmética" {% if request.args.get('categoria') == 'Dermocosmética' %}selected{% endif %}>Dermocosmética</option>
+                        <option value="Cuidado" {% if request.args.get('categoria') == 'Cuidado' %}selected{% endif %}>Cuidado Personal</option>
+                        <option value="Perfumería" {% if request.args.get('categoria') == 'Perfumería' %}selected{% endif %}>Perfumería</option>
+                        <option value="Cuidado Capilar" {% if request.args.get('categoria') == 'Cuidado Capilar' %}selected{% endif %}>Cuidado Capilar</option>
+                    </optgroup>
+                    <optgroup label="👶 Otros">
+                        <option value="Infantil" {% if request.args.get('categoria') == 'Infantil' %}selected{% endif %}>Mundo Infantil</option>
+                        <option value="Botiquín" {% if request.args.get('categoria') == 'Botiquín' %}selected{% endif %}>Primeros Auxilios</option>
+                        <option value="Naturales" {% if request.args.get('categoria') == 'Naturales' %}selected{% endif %}>Productos Naturales</option>
+                    </optgroup>
                 </select>
             </div>
             
@@ -39,22 +52,30 @@
 </section>
 
 <section class="section-padding" style="padding-bottom: 20px;">
-    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); text-align: center; gap: 15px;">
-        <a href="{{ url_for('catalogo', categoria='Infantil') }}" class="card cat-btn {% if request.args.get('categoria') == 'Infantil' %}active-cat{% endif %}" style="padding: 15px; text-decoration: none;">
-            <div style="font-size: 2rem;">👶</div>
-            <p style="font-size: 0.8rem; font-weight: 700; margin-top: 10px; color: var(--dark);">Infantil</p>
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); text-align: center; gap: 15px;">
+        <a href="{{ url_for('catalogo', categoria='Medicamentos') }}" class="card cat-btn" style="padding: 15px; text-decoration: none;">
+            <div style="font-size: 1.8rem;">💊</div>
+            <p style="font-size: 0.75rem; font-weight: 700; margin-top: 10px; color: var(--dark);">Fármacos</p>
         </a>
-        <a href="{{ url_for('catalogo', categoria='Cuidado') }}" class="card cat-btn {% if request.args.get('categoria') == 'Cuidado' %}active-cat{% endif %}" style="padding: 15px; text-decoration: none;">
-            <div style="font-size: 2rem;">🧴</div>
-            <p style="font-size: 0.8rem; font-weight: 700; margin-top: 10px; color: var(--dark);">Cuidado</p>
+        <a href="{{ url_for('catalogo', categoria='Infantil') }}" class="card cat-btn" style="padding: 15px; text-decoration: none;">
+            <div style="font-size: 1.8rem;">👶</div>
+            <p style="font-size: 0.75rem; font-weight: 700; margin-top: 10px; color: var(--dark);">Infantil</p>
         </a>
-        <a href="{{ url_for('catalogo', categoria='Suplementos') }}" class="card cat-btn {% if request.args.get('categoria') == 'Suplementos' %}active-cat{% endif %}" style="padding: 15px; text-decoration: none;">
-            <div style="font-size: 2rem;">🍏</div>
-            <p style="font-size: 0.8rem; font-weight: 700; margin-top: 10px; color: var(--dark);">Nutrición</p>
+        <a href="{{ url_for('catalogo', categoria='Cuidado') }}" class="card cat-btn" style="padding: 15px; text-decoration: none;">
+            <div style="font-size: 1.8rem;">🧴</div>
+            <p style="font-size: 0.75rem; font-weight: 700; margin-top: 10px; color: var(--dark);">Cuidado</p>
         </a>
-        <a href="{{ url_for('catalogo', categoria='Botiquín') }}" class="card cat-btn {% if request.args.get('categoria') == 'Botiquín' %}active-cat{% endif %}" style="padding: 15px; text-decoration: none;">
-            <div style="font-size: 2rem;">🩹</div>
-            <p style="font-size: 0.8rem; font-weight: 700; margin-top: 10px; color: var(--dark);">Botiquín</p>
+        <a href="{{ url_for('catalogo', categoria='Suplementos') }}" class="card cat-btn" style="padding: 15px; text-decoration: none;">
+            <div style="font-size: 1.8rem;">🍏</div>
+            <p style="font-size: 0.75rem; font-weight: 700; margin-top: 10px; color: var(--dark);">Nutrición</p>
+        </a>
+        <a href="{{ url_for('catalogo', categoria='Dermocosmética') }}" class="card cat-btn" style="padding: 15px; text-decoration: none;">
+            <div style="font-size: 1.8rem;">🧪</div>
+            <p style="font-size: 0.75rem; font-weight: 700; margin-top: 10px; color: var(--dark);">Dermo</p>
+        </a>
+        <a href="{{ url_for('catalogo', categoria='Botiquín') }}" class="card cat-btn" style="padding: 15px; text-decoration: none;">
+            <div style="font-size: 1.8rem;">🩹</div>
+            <p style="font-size: 0.75rem; font-weight: 700; margin-top: 10px; color: var(--dark);">Botiquín</p>
         </a>
     </div>
 </section>
@@ -68,10 +89,10 @@
                 <div class="product-img-wrapper" style="width: 100%; height: 240px; overflow: hidden; position: relative; background: #fff; display: flex; align-items: center; justify-content: center;">
                     <img src="{{ url_for('static', filename='uploads/' + p.imagen) }}" 
                          alt="{{ p.nombre }}" 
-                         style="max-width: 90%; max-height: 90%; object-fit: contain; transition: transform 0.5s ease;">
+                         style="max-width: 90%; max-height: 90%; object-fit: contain;">
                     
-                    {% if p.precio < 3000 %}
-                        <div class="badge" style="position: absolute; top: 15px; left: 15px; background: #22c55e; color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 700;">Precio Vecino</div>
+                    {% if p.precio < 5000 %}
+                        <div class="badge" style="position: absolute; top: 15px; left: 15px; background: #22c55e; color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 700;">Oferta Vecinal</div>
                     {% endif %}
                 </div>
 
@@ -91,8 +112,8 @@
                     </button>
                     
                     <a href="https://wa.me/56920893532?text=Hola Farmacia Andrade, consulto por stock de: {{ p.nombre }}" 
-                       target="_blank" 
-                       class="btn-text" style="font-size: 0.85rem; text-align: center; color: #475569; text-decoration: none;">
+                        target="_blank" 
+                        class="btn-text" style="font-size: 0.85rem; text-align: center; color: #475569; text-decoration: none;">
                         <i class="fab fa-whatsapp" style="color: #25d366;"></i> Consultar Stock
                     </a>
                 </div>
@@ -102,7 +123,7 @@
         <div class="card" style="grid-column: 1/-1; padding: 80px; text-align: center;">
             <div style="font-size: 4rem; color: #e2e8f0; margin-bottom: 20px;"><i class="fas fa-box-open"></i></div>
             <h3>Sin resultados</h3>
-            <p>No encontramos productos que coincidan con tu búsqueda.</p>
+            <p>No encontramos productos en la categoría "{{ request.args.get('categoria', '') }}".</p>
             <a href="{{ url_for('catalogo') }}" class="btn btn-primary" style="margin-top: 20px;">Ver todo el catálogo</a>
         </div>
         {% endfor %}
